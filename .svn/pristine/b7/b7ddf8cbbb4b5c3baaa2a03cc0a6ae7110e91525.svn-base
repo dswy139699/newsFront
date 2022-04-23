@@ -1,0 +1,22 @@
+import { getStudent, getRecordById } from '@/api/solicit'
+
+export const services = {
+  getStudent (data) { // 查询分页
+    return new Promise((resolve, reject) => {
+      getStudent(data).then(response => {
+        resolve(response || {})
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getRecordById (data) { // 查询分页
+    return new Promise((resolve, reject) => {
+      getRecordById(data).then(response => {
+        resolve(response || {})
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  }
+}

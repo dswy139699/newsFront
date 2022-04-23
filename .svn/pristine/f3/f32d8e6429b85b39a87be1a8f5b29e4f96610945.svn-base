@@ -1,0 +1,6 @@
+import UserLayout from './UserLayout'
+import BasicLayout from './BasicLayout'
+import StudentLayout from './StudentLayout'
+import BasicStudent from './BasicStudent'
+
+export { UserLayout, BasicLayout, StudentLayout, BasicStudent }

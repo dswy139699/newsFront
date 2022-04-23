@@ -1,0 +1,240 @@
+// eslint-disable-next-line
+import { UserLayout, BasicLayout } from '@/layouts'
+
+// 学校
+export const asyncRouterMap = [
+  {
+    path: '/',
+    name: 'index',
+    component: BasicLayout,
+    meta: { title: '主页' },
+    redirect: '/book/solicitManage/schoolManage',
+    children: [
+      {
+        path: '/book/solicitManage',
+        name: 'solicitManage',
+        component: { render: h => h('router-view') },
+        meta: { title: '征订管理', icon: 'form', keepAlive: true }, // 没有permission默认没有加权限，全部可以访问，type为了menu点击时，相同的type默认选中menu的样式
+        redirect: '/book/solicitManage/schoolManage',
+        children: [
+          {
+            path: '/book/solicitManage/schoolManage',
+            name: 'schoolManage',
+            component: () => import('@/views/solicitManage/school'),
+            meta: { title: '学校管理', keepAlive: true }
+          },
+          {
+            path: '/book/solicitManage/courseManage',
+            name: 'courseManage',
+            component: () => import('@/views/solicitManage/course'),
+            meta: { title: '课程管理', keepAlive: true }
+          },
+          {
+            path: '/book/solicitManage/classManage',
+            name: 'classManage',
+            component: () => import('@/views/solicitManage/class'),
+            meta: { title: '班级管理', keepAlive: true }
+          },
+          {
+            path: '/book/solicitManage/studentManage',
+            name: 'studentManage',
+            component: () => import('@/views/solicitManage/student'),
+            meta: { title: '学生管理', keepAlive: true }
+          },
+          {
+            path: '/book/solicitManage/bookManage',
+            name: 'bookManage',
+            component: () => import('@/views/solicitManage/book'),
+              meta: { title: '课程教材管理', keepAlive: true }
+          },
+          {
+            path: '/book/solicitManage/studentSolicit',
+            name: 'studentSolicit',
+            component: { render: h => h('router-view') },
+            meta: { title: '学生征订管理', icon: 'solution', keepAlive: true }, // 没有permission默认没有加权限，全部可以访问，type为了menu点击时，相同的type默认选中menu的样式
+            redirect: '/book/solicitManage/payed',
+            children: [
+              {
+                path: '/book/solicitManage/payed',
+                name: 'payed',
+                component: () => import('@/views/solicitManage/studentSolicit/payed'),
+                meta: { title: '已付款学生', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/unPayed',
+                name: 'unPayed',
+                component: () => import('@/views/solicitManage/studentSolicit/unPayed'),
+                meta: { title: '未付款学生', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/supplyPay',
+                name: 'supplyPay',
+                component: () => import('@/views/solicitManage/studentSolicit/supplyPay'),
+                meta: { title: '已补款学生', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/fastMail',
+                name: 'fastMail',
+                component: () => import('@/views/solicitManage/fastMail'),
+                meta: { title: '快件汇总', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/payedInfo',
+                name: 'payedInfo',
+                hidden: true,
+                component: () => import('@/views/solicitManage/studentSolicit/payed/studentInfo'),
+                meta: { title: '已付款学生信息', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/unPayedInfo',
+                name: 'unPayedInfo',
+                hidden: true,
+                component: () => import('@/views/solicitManage/studentSolicit/unPayed/studentInfo'),
+                meta: { title: '未付款学生信息', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/supplyPayInfo',
+                name: 'supplyPayInfo',
+                hidden: true,
+                component: () => import('@/views/solicitManage/studentSolicit/supplyPay/studentInfo'),
+                meta: { title: '已补款学生信息', keepAlive: true }
+              },
+              {
+                path: '/book/solicitManage/printInfo',
+                name: 'printInfo',
+                hidden: true,
+                component: () => import('@/views/solicitManage/printInfo'),
+                meta: { title: '打印清单', keepAlive: true }
+              }
+            ]
+            // component: () => import('@/views/solicitManage/studentSolicit'),
+            // meta: { title: '学生征订管理', keepAlive: true }
+          },
+          // {
+          //   path: '/book/solicitManage/fastMail',
+          //   name: 'fastMail',
+          //   component: () => import('@/views/solicitManage/fastMail'),
+          //   meta: { title: '快件汇总', keepAlive: true }
+          // },
+          {
+            path: '/book/solicitManage/fastMailInfo',
+            name: 'fastMailInfo',
+            hidden: true,
+            component: () => import('@/views/solicitManage/fastMail/studentInfo'),
+            meta: { title: '快件详情', keepAlive: true }
+          },
+          {
+            path: '/book/solicitManage/export',
+            name: 'export',
+            component: () => import('@/views/solicitManage/export'),
+            meta: { title: '数据导出',
+            keepAlive: true,
+            type: 'composite'
+            }
+          }
+        ]
+      },
+      {
+        path: '/assit/systemPerson',
+        name: 'systemPerson',
+        component: { render: h => h('router-view') },
+        meta: { title: '系统管理', keepAlive: true, icon: 'user', type: 'system' }
+      }
+    ] },
+      // 错误页面
+
+      {
+        path: '/exception/403',
+        // name: 'Exception403',
+        component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
+        meta: { title: '403' }
+      },
+      {
+        path: '/exception/404',
+        // name: 'Exception404',
+        component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
+        meta: { title: '404' }
+      },
+      {
+        path: '*', redirect: '/exception/404', hidden: true
+      }
+    ]
+
+// 学生
+export const asyncStudentRouterMap = [
+  {
+    path: '/',
+    name: 'index',
+    component: BasicLayout,
+    meta: { title: '主页' },
+    redirect: '/book/student/payed',
+    children: [
+      {
+        path: '/book/student/unPayed',
+        name: 'studentUnPayed',
+        component: () => import('@/views/studentView/unPayed'),
+        meta: { title: '未付款', keepAlive: true, icon: 'yuque' }
+      },
+      {
+        path: '/book/student/payed',
+        name: 'studentPayed',
+        component: () => import('@/views/studentView/payed'),
+        meta: { title: '已付款', keepAlive: true, icon: 'check-square' }
+      }
+      // {
+      //   path: '/book/student/unPayed',
+      //   name: 'unPayed',
+      //   component: () => import('@/views/studentView/unPayed'),
+      //   meta: { title: '未付款', keepAlive: true, icon: 'yuque' }
+      // }
+    ]
+  },
+  // 错误页面
+
+  {
+    path: '/exception/403',
+    // name: 'Exception403',
+    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
+    meta: { title: '403' }
+  },
+  {
+    path: '/exception/404',
+    // name: 'Exception404',
+    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
+    meta: { title: '404' }
+  },
+  {
+    path: '*', redirect: '/exception/404', hidden: true
+  }
+  ]
+
+/**
+ * 基础路由
+ * @type { *[] }
+ */
+export const constantRouterMap = [
+  {
+    path: '/user',
+    component: UserLayout,
+    redirect: '/user/login',
+    hidden: true,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
+      },
+      {
+        path: 'recover',
+        name: 'recover',
+        component: undefined
+      }
+    ]
+  },
+
+  {
+    path: '/404',
+    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
+  }
+
+]

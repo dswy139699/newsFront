@@ -1,0 +1,145 @@
+import router from './router'
+import store from './store'
+// import storage from 'store'
+import NProgress from 'nprogress' // progress bar
+import '@/components/NProgress/nprogress.less' // progress bar custom style
+// import notification from 'ant-design-vue/es/notification'
+import { setDocumentTitle, domTitle } from '@/utils/domUtil'
+// import { ACCESS_TOKEN } from '@/store/mutation-types'
+import { i18nRender } from '@/locales'
+import { LStorage } from '@/store/session.js'
+
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
+
+const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
+const loginRoutePath = '/user/login'
+const defaultRoutePath = '/book/solicitManage/courseManage'
+
+router.beforeEach((to, from, next) => {
+  NProgress.start() // start progress bar
+  to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${i18nRender(to.meta.title)} - ${domTitle}`))
+  /* has token */
+  if (LStorage.getItem('token')) {
+    if (to.path === loginRoutePath) {
+      next({ path: defaultRoutePath })
+      NProgress.done()
+    } else {
+      // check login user.roles is null
+      if (!store.getters.nickname) { // 当页面刷新时
+        // request login userInfo
+        store
+          .dispatch('GetInfo')
+          .then(res => {
+            // const roles = res.result && res.result.role
+            // generate dynamic router
+            // const permission = []
+            // console.log(res)
+            store.dispatch('GetSchool').then().catch().finally(() => {
+            store.dispatch('GetClass')
+            const permission = []
+            // const permission = ['aggregate', 'itemAssit', 'caseAssit', 'giveMe', 'assitTarget', 'fundMange', 'sendMange', 'contentMange', 'systemPerson', 'volunteerMange']
+            store.dispatch('GenerateRoutes', { roles: permission, user: res.user || {} }).then(() => { // 写死角色，实际应该根据后台传过来的角色信息
+              // 根据roles权限生成可访问的路由表
+              // 动态添加可访问路由表
+              router.addRoutes(store.getters.addRouters)
+              // 请求带有 redirect 重定向时，登录自动重定向到该地址
+              const redirect = decodeURIComponent(from.query.redirect || to.path)
+              // console.log(to, redirect)
+              if (to.path === redirect) {
+                // if (getPath(to)) { // 判断是否有权限
+                //   // set the replace: true so the navigation will not leave a history record
+                  next({ ...to, replace: true })
+                // } else { // 没有权限就跳到404
+                //   next({ path: '/exception/404' })
+                // }
+              } else {
+                // 跳转到目的路由
+                next({ path: redirect })
+              }
+            })
+            })
+          })
+          .catch(() => {
+            // notification.error({
+            //   message: '错误',
+            //   description: '请求用户信息失败,请重新登录'
+            // })
+            // 失败时，获取用户信息失败时，调用登出，来清空历史保留信息
+            store.dispatch('OnClear').then(() => {
+              next({ path: loginRoutePath, query: { redirect: to.fullPath } })
+            })
+          })
+      } else { // 当页面没有刷新时
+        // if (getPath(to)) { // 判断是否有权限
+          //   // set the replace: true so the navigation will not leave a history record
+          // next({ ...to, replace: true })
+          next()
+        // } else { // 没有权限就跳到404
+        //   next({ path: '/exception/404' })
+        // }
+          // next()
+      }
+    }
+  } else {
+    if (whiteList.includes(to.name)) {
+      // 在免登录白名单，直接进入
+      next()
+    } else {
+      next({ path: loginRoutePath, query: { redirect: to.fullPath } })
+      NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
+    }
+  }
+})
+
+// function getPath (path) {
+//   const userInfo = store.getters.userInfo ? store.getters.userInfo.user : {}
+//   const permission = userInfo.user_permissions || []
+//   if (path.path && (path.path === '/assit/compositeAssit/increaseItem' || path.path === '/assit/compositeAssit/activeAssit')) {
+//     const isShow = permission.filter(value => value === 'itemAssit')// 帮扶资金项目新增,帮扶活动新增，
+//     if (!isShow || isShow.length <= 0) { // 无权限时
+//       if (path.query && path.query.pageType && (path.query.pageType === 'view' || path.query.pageType === 'approval' || path.query.pageType === 'approvalFund')) { // 判断页面跳转带过来的页面类型的值
+//         return true
+//       } else {
+//         return false
+//       }
+//     }
+//   } else if (path.path && path.path === '/assit/compositeAssit/activeAssit') { // 个案项目新增
+//     const isShow = permission.filter(value => value === 'caseAssit')// 帮扶资金项目新增,帮扶活动新增，新增个案，帮侬一把活动新增，帮侬一把
+//     if (!isShow || isShow.length <= 0) { // 无权限时
+//       if (path.query && path.query.pageType && (path.query.pageType === 'view' || path.query.pageType === 'approval' || path.query.pageType === 'approvalFund')) { // 判断页面跳转带过来的页面类型的值
+//         return true
+//       } else {
+//         return false
+//       }
+//     }
+//   } else if (path.path && (path.path === '/assit/compositeAssit/givemeActive' || path.path === '/assit/compositeAssit/fundAssit')) { // 帮侬一把新增
+//     const isShow = permission.filter(value => value === 'giveMe')// 帮侬一把活动新增，帮侬一把资金新增
+//     if (!isShow || isShow.length <= 0) { // 无权限时
+//       if (path.query && path.query.pageType && (path.query.pageType === 'view' || path.query.pageType === 'approval' || path.query.pageType === 'approvalFund')) { // 判断页面跳转带过来的页面类型的值
+//         return true
+//       } else {
+//         return false
+//       }
+//     }
+//   } else if (path.path && (path.path === '/assit/contentManagement/increaseFile')) { // 文件新增
+//     const isShow = permission.filter(value => value === 'contentMange')// 帮侬一把活动新增，帮侬一把资金新增
+//     if (!isShow || isShow.length <= 0) { // 无权限时
+//       if (path.query && path.query.pageType && path.query.pageType === 'view') { // 判断页面跳转带过来的页面类型的值
+//         return true
+//       } else {
+//         return false
+//       }
+//     }
+//   }
+//   return true
+// }
+// router.beforeEach(() => {
+//   console.log('跳转')
+//   window.scrollTo(0, 0)
+//   // NProgress.done() // finish progress bar
+// })
+
+router.afterEach(() => {
+  window.scrollTo(0, 0)
+  NProgress.done() // finish progress bar
+})

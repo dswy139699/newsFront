@@ -1,0 +1,425 @@
+<template>
+  <page-header-wrapper>
+    <template v-slot:content>
+      <div class="page-header-content">
+      </div>
+    </template>
+    <a-spin tip="Loading..." :spinning="spinning">
+      <div class="content spin-content">
+        <div>
+          <GlobalForm :dataSource="getFormData" ref="schoolSerch" id="schoolSearch">
+            <template v-slot:button>
+              <div style="margin-top:4px;text-align: right">
+                <a-button type="primary" @click="search">
+                  查询
+                </a-button>
+                <a-button style="margin-left:10px" @click="reset">
+                  重置
+                </a-button>
+              </div>
+            </template>
+          </GlobalForm>
+        </div>
+        <div style="text-align: left">
+          <a-button type="primary" @click="increase" style="margin-right:5px">
+            新增
+          </a-button>
+          <a-upload
+            :showUploadList="false"
+            :customRequest="customRequest"
+            @change="()=>{}"
+          >
+            <a-button type="primary">
+              导入班级信息
+            </a-button>
+          </a-upload>
+        </div>
+        <div class="table" style="margin-top:10px;">
+          <a-table
+            :row-selection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+            :columns="columns"
+            :data-source="data"
+            @change="changePage"
+            :loading="loading"
+            :pagination="pagination"
+            :rowKey="record=>record.id"
+          >
+            <span slot="action" slot-scope="text,data">
+              <a @click="onEdit(data)">编辑</a>
+              <a-divider type="vertical" />
+              <a-popconfirm
+                title="确定删除?"
+                ok-text="是"
+                cancel-text="否"
+                @confirm="delStu(data)"
+              >
+                <a>删除</a>
+              </a-popconfirm>
+            </span>
+            <template slot="footer" v-if="data&&data.length>0">
+              <a-button type="primary" @click="delStus(data)">删除所选数据</a-button>
+            </template>
+          </a-table>
+        </div>
+        <div class="modal" ref="modal">
+          <a-modal
+            :title="title"
+            :visible="visible"
+            @cancel="cancel"
+            @ok="handelOk"
+            destroyOnClose
+            :getContainer="()=>this.$refs.modal"
+          >
+            <div class="increase">
+              <GlobalForm ref="increaseDom" :dataSource="getIncreaseForm" id="increaseDom">
+                <template v-slot:warning>
+                  <a-alert style="margin:5px 0 0 10px" message="如：设计1班" type="warning" show-icon />
+                </template>
+                <template v-slot:career>
+                  <a-alert style="margin:5px 0 0 10px" message="如：网络工程" type="warning" show-icon />
+                </template>
+                <!--<template v-slot:empCode>-->
+                <!--<a-alert  style="margin:5px 0 0 10px" message="如：12345" type="warning" show-icon />-->
+                <!--</template>-->
+                <template v-slot:classNum>
+                  <a-alert style="margin:5px 0 0 10px" message="如：20111" type="warning" show-icon />
+                </template>
+                <template v-slot:grade>
+                  <a-alert style="margin:5px 0 0 10px" message=" 如：2011级" type="warning" show-icon />
+                </template>
+                <template v-slot:classIds>
+                  <div>
+                    <div class="table" style="margin-top:10px;">
+                      <a-table
+                        :row-selection="{ selectedRowKeys:selectedRowKeysIncrease,onChange:onSelectChangeIncrease }"
+                        :columns="columnsCourse"
+                        :data-source="$store.getters.courseNameList || []"
+                        :loading="loadingCourse"
+                        :pagination="{pageSize:5}"
+                        :rowKey="record=>record.id"
+                      >
+                        <template slot="footer" slot-scope="" v-if="$store.getters.courseNameList&&$store.getters.courseNameList.length>0">
+                          <div>
+                            已选：
+                            <span v-for="item in selectedListInfo" :key="item.id" style="margin:0 5px 5px 0;display: inline-block">
+                              <a-tag style="vertical-align: top" color="blue" closable @close="(e)=>closeTag(e,item)">({{ item.num }}){{ item.name }}</a-tag>
+                            </span>
+                          </div>
+                        </template>
+                      </a-table>
+                    </div>
+                  </div>
+                </template>
+              </GlobalForm>
+            </div>
+          </a-modal>
+        </div>
+      </div>
+    </a-spin>
+  </page-header-wrapper>
+</template>
+
+<script>
+  import GlobalForm from '@/components/GlobalForm'
+  import { formData } from './formData'
+  import { checkPhone, checkEmail } from '@/utils/checkFun'
+  import { services } from './service'
+  const columns = [
+    // {
+    //   title: 'ID',
+    //   dataIndex: 'classId',
+    //   key: 'classId'
+    // },
+    {
+      title: '班级名称',
+      dataIndex: 'clazzName',
+      key: 'clazzName'
+    },
+    {
+      title: '班级号',
+      dataIndex: 'clazzNum',
+      key: 'clazzNum'
+    },
+    {
+      title: '年级',
+      dataIndex: 'grade',
+      key: 'grade'
+    },
+    {
+      title: '学院',
+      dataIndex: 'schoolName',
+      key: 'schoolName'
+    },
+    {
+      title: '操作',
+      key: 'action',
+      scopedSlots: { customRender: 'action' }
+    }
+  ]
+  const columnsCourse = [
+    {
+      title: '课程号',
+      dataIndex: 'num',
+      key: 'num'
+    },
+    {
+      title: '课程名称',
+      dataIndex: 'name',
+      key: 'name'
+    }
+  ]
+  export default {
+    name: 'Index',
+    components: {
+      GlobalForm
+    },
+    data () {
+      return {
+        columns,
+        spinning: false,
+        title: '新增课程',
+        loading: true,
+        searchData: {}, // 查询数据
+        columnsCourse,
+        courseData: [], // 课程数据
+        loadingCourse: false,
+        selectedRowKeysIncrease: [], // 已选课程的key
+        selectedListInfo: [], // 已选课程的全部 this.$store.dispatch('GetCourse')信息
+        selectedRowKeys: [], // 选中的table数据
+        editInfo: null, // 需要编辑的该条数据的信息
+        visible: false,
+        data: [],
+        pagination: {// 分页
+          current: 1,
+          pageSize: 20,
+          total: 0
+        }
+      }
+    },
+    computed: {
+      getFormData () {
+        return formData.getFormData(this)
+      },
+      getIncreaseForm () {
+        return formData.getIncreaseForm(this)
+      }
+    },
+    created () {
+      // this.$store.dispatch('GetSchool')
+      // this.$store.dispatch('GetCourse')
+    },
+    mounted () {
+      // console.log(this.$store.getters.schoolNameList)
+      this.searchData = { schoolId: this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : '' }// 查询数据
+      this.$store.dispatch('GetCourse', { schoolId: this.searchData.schoolId })
+      this.getClazzForPage({ pageIndex: 1, pageSize: this.pagination.pageSize, ...this.searchData })
+    },
+    methods: {
+      onChange (data) {
+        this.$store.dispatch('GetCourse', { schoolId: data })
+        this.selectedRowKeysIncrease = []
+        this.selectedListInfo = []
+        console.log(data)
+      },
+      // 校验电话号码是否标准
+      checkTel (rule, value, callback) {
+        if (value && !checkPhone(value)) {
+          const title = '请输入正确格式的号码'
+          callback(title)
+        } else {
+          callback()
+        }
+      },
+      // 校验邮箱格式
+      checkEma (rule, value, callback) {
+        if (value && !checkEmail(value)) {
+          const title = '请输入正确格式的邮箱'
+          callback(title)
+        } else {
+          callback()
+        }
+      },
+      // check (rule, value, callback) {
+      //   if (value && value.length < 7) {
+      //     const title = '密码不少于六位数'
+      //     callback(title)
+      //   } else {
+      //     callback()
+      //   }
+      // },
+      // 分页切换
+      changePage (pagination) {
+        this.pagination.current = pagination.current
+        this.getClazzForPage({ pageIndex: pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+      },
+      increase () { // 新增
+        this.title = '新增班级'
+        this.visible = true
+        this.$store.dispatch('GetCourse', { schoolId: this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : '' })
+        this.editInfo = null
+      },
+      onEdit (data) {
+        services.getClazzById({ id: data.id }).then(response => {
+        const newData = this._.cloneDeep(response)
+        const courseData = response.courseIds || []
+          this.$store.dispatch('GetCourse', { schoolId: newData.schoolId })
+        this.title = '编辑班级'
+        this.editInfo = response
+        this.visible = true
+        this.selectedRowKeysIncrease = []
+        this.selectedListInfo = courseData
+        for (let i = 0; i < courseData.length; i++) {
+          this.selectedRowKeysIncrease.push(courseData[i].id)
+        }
+        this.$nextTick(() => { // 延时，不然dom没有加载出来
+          setTimeout(() => {
+            // this.$refs.increaseDom.setFieldsValue({ ...newData })
+            this.$refs.increaseDom.setFieldsValue(this._.pick(newData, 'clazzName', 'clazzNum', 'grade', 'major', 'campus', 'schoolId'))
+          })
+        })
+        })
+      },
+      handelOk () { // 新增确定
+        const params = this.$refs.increaseDom.handleSubmit()
+        // console.log(params)
+        if (params) {
+          if (this.editInfo) { // 编辑情况
+            this.updateClazz({ ...this.editInfo, ...params, courseIds: this.selectedListInfo })
+          } else { // 新增情况
+            this.saveClazz({ ...params, courseIds: this.selectedListInfo })
+          }
+          this.cancel()
+        }
+      },
+      cancel () {
+        this.$refs.increaseDom.resetFields()
+        this.selectedRowKeysIncrease = []
+        this.selectedListInfo = []
+        this.visible = false
+      },
+      search () { // 查询
+        const params = this.$refs.schoolSerch.getFieldsValue()
+        this.searchData = params
+        this.pagination.current = 1
+        this.getClazzForPage({ pageIndex: 1, pageSize: this.pagination.pageSize, ...params })
+      },
+      reset () { // 重置
+        this.$refs.schoolSerch.resetFields()
+        this.searchData = { schoolId: this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : '' }// 查询数据
+      },
+      onSelectChange (selectedRowKeys) { // table选择
+        // console.log('selectedRowKeys changed: ', selectedRowKeys);
+        this.selectedRowKeys = selectedRowKeys
+      },
+       onSelectChangeIncrease (selectedRowKeys, selectedRows) { // table选择
+        console.log('selectedRowKeys changed: ', selectedRowKeys, selectedRows)
+        this.selectedRowKeysIncrease = selectedRowKeys
+         this.selectedListInfo = selectedRows
+      },
+      closeTag (e, data) {
+        for (let i = 0; i < this.selectedRowKeysIncrease.length; i++) {
+          if (this.selectedRowKeysIncrease[i] === data.id) {
+            this.selectedRowKeysIncrease.splice(i, 1)
+            break
+          }
+        }
+        for (let i = 0; i < this.selectedListInfo.length; i++) {
+          if (this.selectedListInfo[i].id === data.id) {
+            this.selectedListInfo.splice(i, 1)
+            break
+          }
+        }
+      },
+      getClazzForPage (data) {
+        this.loading = true
+        services.getClazzForPage(data).then(response => {
+          this.data = response.records || []
+          this.pagination.total = response.total || 0
+          this.loading = false
+        })
+      },
+      // 新增
+      saveClazz (data) {
+        services.saveClazz(data).then(response => {
+          this.$notification.success({
+            message: '新增成功'
+          })
+          // this.searchData = {}
+          // this.pagination.current = 1
+          this.getClazzForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+        })
+      },
+      // 更新
+      updateClazz (data) {
+        services.updateClazz(data).then(response => {
+          this.$notification.success({
+            message: '更新成功'
+          })
+          // this.searchData = {}
+          // this.pagination.current = 1
+          this.getClazzForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+        })
+      },
+      delStu (data) { // 删除一个
+        this.delClazz({ idList: [data.id] })
+      },
+      delStus () { // 删除多个
+        this.delClazz({ idList: this.selectedRowKeys })
+      },
+      // 删除
+      delClazz (data) {
+        services.delClazz(data).then(response => {
+          this.$notification.success({
+            message: '删除成功'
+          })
+          // this.searchData = {}
+          // this.pagination.current = 1
+          this.getClazzForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+        })
+      },
+      // 文件上传的改变
+      customRequest (data) {
+        this.spinning = true
+        const formData = new FormData()
+        formData.append('files', data.file)
+        // formData.append('schoolId', 8)
+        // formData.append('process_base_work_flow_number', this.workFlowNumber.process_base_work_flow_number)
+          services.importClazzInfo(formData).then(response => {
+            this.$notification.success({
+              message: '文件上传成功'
+            })
+            this.spinning = false
+            this.files = response
+          }).catch(() => {
+            this.spinning = false
+          })
+      }
+      // getClazzById (data) {
+      //   services.getClazzById(data).then(response => {
+      //       this.editInfo = response
+      //   })
+      // }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+.content{
+  background: #fff;
+  padding:20px;
+  border-radius:2px;
+  .modal {
+    /deep/ .ant-modal {
+      width: 900px;
+      min-width: 900px;
+    }
+    /deep/ .ant-alert {
+      padding: 5px 5px 5px 35px;
+      font-size: 12px;
+      .ant-alert-icon {
+        top: 8px;
+      }
+    }
+  }
+}
+</style>

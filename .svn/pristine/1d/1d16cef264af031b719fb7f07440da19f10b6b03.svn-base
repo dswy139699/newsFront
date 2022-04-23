@@ -1,0 +1,116 @@
+<template>
+  <div class="studentHeader">
+    <div style="float:left;line-height:50px;padding:0 10px;font-weight: bold">
+      <img src="@/assets/logo.svg" style="width:24px;height:24px;margin-right:10px"/>
+      <span style="vertical-align: top">生涯图书</span>
+    </div>
+    <div style="float: right;line-height:50px;padding:0 10px;">
+      <a-dropdown v-if="userInfo && userInfo.name" placement="bottomRight">
+        <span class="ant-pro-account-avatar">
+          <a-avatar style="margin-right:10px;vertical-align: middle;" size="small" src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" class="antd-pro-global-header-index-avatar" />
+          <span>{{ userInfo.name }}</span>
+        </span>
+        <template v-slot:overlay>
+          <a-menu class="ant-pro-drop-down menu" :selected-keys="[]">
+            <a-menu-item key="logout" @click="handleLogout">
+              <a-icon type="logout" />
+              退出登录
+            </a-menu-item>
+          </a-menu></template></a-dropdown>
+    </div>
+  </div>
+</template>
+
+<script>
+  import AvatarDropdown from './AvatarDropdown'
+  import { mapActions, mapGetters } from 'vuex'
+  import { Modal } from 'ant-design-vue'
+
+  export default {
+    name: 'RightContent',
+    components: {
+      AvatarDropdown
+    },
+    props: {
+      prefixCls: {
+        type: String,
+        default: 'ant-pro-global-header-index-action'
+      },
+      // isMobile: {
+      //   type: Boolean,
+      //   default: () => false
+      // },
+      topMenu: {
+        type: Boolean,
+        required: true
+      },
+      theme: {
+        type: String,
+        required: true
+      }
+    },
+    data () {
+      return {
+        showMenu: true,
+        currentUser: {}
+      }
+    },
+    computed: {
+      ...mapGetters(['userInfo', 'schoolNameList', 'selectSchoolInfo', 'isMobile']),
+      wrpCls () {
+        return {
+          'ant-pro-global-header-index-right': true,
+          [`ant-pro-global-header-index-${(this.isMobile || !this.topMenu) ? 'light' : this.theme}`]: true
+        }
+      },
+      defaultValue () {
+        const value = this.schoolNameList[0] ? this.schoolNameList[0].value : ''
+        return value
+      }
+    },
+    mounted () {
+      // console.log(this.userInfo)
+    },
+    methods: {
+      ...mapActions(['SetSelectSchool']),
+      schoolChange (value, option) {
+        let selectValue = {}
+        for (let i = 0; i < this.schoolNameList.length; i++) {
+          if (this.schoolNameList[i].value === value) { selectValue = this.schoolNameList[i] }
+        }
+        this.SetSelectSchool(selectValue)
+      },
+      handleLogout (e) {
+        Modal.confirm({
+          title: '确定要退出登录吗',
+          // content: this.$t('layouts.usermenu.dialog.content'),
+          onOk: () => {
+            // return new Promise((resolve, reject) => {
+            //   setTimeout(Math.random() > 0.5 ? resolve : reject, 1500)
+            // }).catch(() => console.log('Oops errors!'))
+            return this.$store.dispatch('Logout').then(() => {
+
+            }).catch().finally(() => {
+              setTimeout(() => {
+                this.$router.push({ name: 'studentLogin' })
+              }, 10)
+            })
+          },
+          onCancel () {}
+        })
+      }
+    }
+  }
+</script>
+<style lang="less" scoped>
+  .studentHeader{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:50px;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  </style>

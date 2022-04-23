@@ -1,0 +1,255 @@
+<template>
+  <div>
+    <a-form :form="form">
+      <a-row style="" v-for="(data,index) in formData" :key="`${(id)}${(index)}`">
+        <div v-for="(item,i) in data.row" :key="`${(id)}${(index)}${(i)}${item.type}`">
+          <a-col :span="getCol(item.col)" v-if="item.type&&item.type==='children'&&item.name" :style="{display:item.display?'':'none'}">
+            <slot v-if="item.type&&item.type==='children'" :name="item.name" ></slot>
+          </a-col>
+          <Input v-if="item.type&&(item.type==='input' || item.type === 'inputNumber' ||item.type === 'inputPassword')" :attrData="item" />
+          <!--<InputFigure v-if="item.type&&(item.type==='inputFigure')" :attrData="item" />-->
+          <TextArea v-if="item.type&&(item.type==='textarea')" :attrData="item" />
+          <DatePicker v-if="item.type&&(item.type==='datePicker' || item.type === 'rangePicker')" :attrData="item" />
+          <Select v-if="item.type&&item.type==='select'" :attrData="item"/>
+          <CheckBox v-if="item.type&&item.type==='checkBox'" :attrData="item"/>
+          <Radio v-if="item.type&&item.type==='radio'" :attrData="item"/>
+          <SwitchForm v-if="item.type&&item.type==='switch'" :attrData="item"/>
+          <TextForm v-if="item.type&&item.type==='text'&&item.name" :attrData="item">
+            <template v-slot:text>
+              <slot :name="item.name"></slot>
+            </template>
+          </TextForm>
+          <TextForm v-if="item.type&&item.type==='text'&&item.hasOwnProperty('defaultValue')" :attrData="item"/>
+          <UploadForm v-if="item.type&&item.type==='upload'" :attrData="item"/>
+          <CascaderForm v-if="item.type&&item.type==='cascader'" :attrData="item"/>
+        </div>
+      </a-row>
+    </a-form>
+  </div>
+</template>
+
+<script>
+  import Input from './Input'
+  import TextArea from './TextArea'
+  import DatePicker from './DatePicker'
+  import CheckBox from './CheckBox'
+  import Radio from './Radio'
+  import Select from './Select'
+  import SwitchForm from './Switch'
+  import Vue from 'vue'
+  import TextForm from './Text'
+  import UploadForm from './Upload'
+  import CascaderForm from './Cascader'
+  // import InputFigure from './InputFigure'
+  // import './style.less'
+  // import { setAttr } from '@/utils/transfer.js'
+  // import Select from './select'
+  export default {
+    name: 'Index',
+    props: {
+      dataSource: {
+        type: Array,
+        default: () => { return [] }
+      },
+      id: {
+        type: String,
+        default: ''
+      }
+    },
+    components: {
+      Input,
+      TextArea,
+      DatePicker,
+      Select,
+      CheckBox,
+      Radio,
+      SwitchForm,
+      TextForm,
+      UploadForm,
+      CascaderForm
+      // InputFigure
+    },
+    data () {
+      return {
+        form: ''// this.$form.createForm(this, { name: 'coordinated' })
+      }
+    },
+    created () {
+      this.form = this.$form.createForm(this, {
+        onFieldsChange: (_, changedFields) => {
+          this.$emit('change', changedFields)
+        },
+        mapPropsToFields: () => {
+          return {
+            // name: this.$form.createFormField({//给其中一个表单域赋值
+            //   value: this.name
+            // })
+          }
+        },
+        onValuesChange: (_, values) => {
+          // console.log('formData', _.form.getFieldsValue())// Object.assign({}, _.form.getFieldsValue(), values)
+          // Synchronize to vuex store in real time
+          // this.$store.commit('update', values)
+        }
+      })
+    },
+    mounted () {
+      // const that = this
+      // that[that.id].$on('handleSubmit', function (data) { // 接收当前页的方法，监听
+      // return that.handleSubmit(data, true)
+      // })
+    },
+    beforeUpdate () {
+    },
+    computed: {
+      formData () {
+        // if (this.id) {
+        //   console.log('id', this.id)
+        // Vue.prototype[this.id] = new Vue()// 创建一个中间变量，监听，bus机制
+        Vue.prototype[this.id] = this.form// 直接将创建的form实例挂到vue实例中
+          // setAttr(this.id)
+        // }
+        return this.getFormData(this.dataSource)
+      }
+    },
+    methods: {
+      // 将传过来的formData数据，处理成页面需要展示的数据类型，两个层级，第一层级是行，第二层级是每行的表单
+      getFormData (data) {
+        const newData = this._.cloneDeep(data)
+        const formData = []// 存最终转化成的数据
+        let colSum = 0// 存表单的col和
+        let rowData = []// 存每行表单数据
+        for (let i = 0; i < newData.length; i++) {
+          const col = parseInt(this.getCol(newData[i].col))
+          if (newData[i].id || newData[i].type === 'children') {
+            newData[i].col = this.getCol(newData[i].col)
+            newData[i].layout = this.getLayout(newData[i].layout)
+            if (('display' in newData[i] && newData[i].display) || !('display' in newData[i])) { // 如果默认dom不展示，就不计算宽度
+              colSum = colSum + col
+              newData[i].display = true
+            } else {
+              newData[i].display = false
+            }
+            if (newData[i].lineFeed) { // 如果要单独生成一行
+              if (colSum > col) { // 判断之前是不是还没有生成一行，如果没有，先生成一行
+                formData.push({ row: rowData })
+                rowData = []
+              }
+              rowData.push(newData[i])
+              formData.push({ row: rowData })// 独立生成一行，这个时候循环到这个位置的form全部生成完成，于是continue,开始下次循环
+              rowData = []
+              colSum = 0
+              continue
+            }
+            if (colSum > 24) { // 当大于24时，之前的循环先生成一行
+              formData.push({ row: rowData })
+              rowData = []
+              colSum = col
+              rowData.push(newData[i])// 将本次的form，push进新的数组
+              if (i === newData.length - 1) { // 如果是最后一个form，并且没有生成，那么将单独生成一组
+                formData.push({ row: rowData })
+              }
+            } else if (colSum === 24) { // 如果加上本次循环的form，恰好为24，那么就加上本次的form直接生成一行
+              rowData.push(newData[i])
+              formData.push({ row: rowData })
+              rowData = []
+              colSum = 0
+            } else { // 如果不足24,那么push进之前的数组
+              rowData.push(newData[i])
+              if (i === newData.length - 1) { // 如果是最后一个form，并且没有生成一行，那么只能单独生成一行
+                formData.push({ row: rowData })
+              }
+            }
+          } else {
+            if (i === newData.length - 1 && colSum < 24) {
+              formData.push({ row: rowData })
+            }
+          }
+        }
+        return formData
+      },
+      // submit方法，提交校验并获取一组输入域的值与 Error，若 fieldNames 参数为空，则校验全部组件
+      handleSubmit (fieldName) {
+        // e.preventDefault()
+        let data = null
+        this.form.validateFields(fieldName, (err, values) => {
+          // Object.assign(this, values)// 直接把values赋给this中定义的变量
+          if (!err) {
+            data = values
+          }
+        })
+        return data
+      },
+      // 获取一组输入控件的值，如不传入参数，则获取全部组件的值
+      getFieldsValue (fieldName) { // fieldName为['age','name']
+        let data = null
+        data = this.form.getFieldsValue(fieldName)
+        return data
+      },
+      // 重置一组输入控件的值（为 initialValue）与状态，如不传入参数，则重置所有组件
+      resetFields (fieldName) { // fieldName为['age','name']
+        this.form.resetFields(fieldName)
+      },
+      // 设置一组输入控件的值
+      setFieldsValue (data) { // {'name', '王二麻子'},可以设置多组数据
+        this.form.setFieldsValue(data)
+      },
+      handleSelectChange (value) {
+        this.form.setFieldsValue({
+          note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`
+        })
+      },
+      // 处理formData传过来的col
+      getCol (col) {
+        if (col && parseInt(col) <= 24) { // 如果传了col
+          return col
+        }
+        return '24'// 如果没传，默认24，占满一行
+      },
+      // 处理传过来的layout
+      getLayout (layout) {
+        let lay = {}
+        if (layout && layout.labelCol) { // 如果有传layout，并且layout里有labelCol
+          lay = {
+            labelCol: { style: { width: layout.labelCol } },
+            wrapperCol: { style: { width: `calc(100% - ${layout.labelCol})` } }
+          }
+        } else { // 如果没传，就默认labelCol宽度为100px,wrapperCol宽度为100% - 100px
+          lay = {
+            labelCol: { style: { width: '100px' } },
+            wrapperCol: { style: { width: 'calc(100% -100px)' } }
+          }
+        }
+        return lay
+      }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+  @import "./style.less";
+  /*.contain {*/
+    /*/deep/ .ant-form-item {*/
+    /*  margin-bottom: 13px;*/
+    /*}*/
+
+    /*/deep/ .ant-col.ant-form-item-label {*/
+    /*  float: left;*/
+    /*}*/
+
+    /*/deep/ .ant-col.ant-form-item-control-wrapper {*/
+    /*  float: left;*/
+      //  /deep/ .ant-input-disabled,.ant-input-number-disabled {
+      //    background:#fff;
+      //    color:rgba(0, 0, 0, 0.65);
+      //}
+      //  /deep/ .ant-input[disabled]{
+      //    color:rgba(0, 0, 0, 0.65);
+      //  }
+      //  /deep/ ant-calendar-range-picker-separator{
+      //    color:rgba(0, 0, 0, 0.65);
+      //  }
+    /*}*/
+  /*}*/
+
+</style>

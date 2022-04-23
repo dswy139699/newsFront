@@ -1,0 +1,100 @@
+<template>
+  <page-header-wrapper>
+    <template v-slot:content>
+      <div class="page-header-content">
+      </div>
+    </template>
+    <div class="content">
+      <div>
+        <a-button type="primary" style="margin-right:10px" @click="visible = true,type=0">导出未征订学生</a-button>
+        <a-button type="primary" style="margin-right:10px" @click="visible = true,type=1">导出所有学生付款信息</a-button>
+        <a-button type="primary" style="margin-right:10px" @click="visible = true,type=2">导出学生退款信息</a-button>
+        <a-button type="primary" @click="visible = true,type=3">导出未补款学生</a-button>
+      </div>
+      <div>
+        <div class="modal">
+          <a-modal
+            title="信息确认"
+            :visible="visible"
+            @cancel="cancel"
+            @ok="handelOk"
+          >
+            <div class="increase">
+              <GlobalForm ref="increaseDom" :dataSource="getFormData" id="increaseDom">
+              </GlobalForm>
+            </div>
+          </a-modal>
+        </div>
+      </div>
+    </div>
+  </page-header-wrapper>
+</template>
+
+<script>
+  // import { services } from './service'
+  import GlobalForm from '@/components/GlobalForm'
+  import { formData } from './formData'
+  export default {
+    name: 'Index',
+    components: {
+      GlobalForm
+    },
+    data () {
+      return {
+        // schoolId: '',
+        type: 0,
+        visible: false
+      }
+    },
+    computed: {
+      getFormData () {
+        return formData.getFormData(this)
+      }
+    },
+    mounted () {
+      // this.schoolId = this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : ''
+    },
+    methods: {
+      exportNo (data) { // 导出未征订学生
+        console.log(data)
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadIsNotSubscriptionsStudent?schoolId=' + data.schoolId + '&password=' + data.loginPwd)
+      },
+      exportAll (data) { // 导出所有学生付款信息
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadPaymentStudent?schoolId=' + data.schoolId + '&password=' + data.loginPwd)
+      },
+      exportReturn (data) { // 导出学生退款信息
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadRefundStudent?schoolId=' + data.schoolId + '&password=' + data.loginPwd)
+      },
+      exportNoBu (data) { // 导出未补款学生
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadFillingMoneyStudent?schoolId=' + data.schoolId + '&password=' + data.loginPwd)
+      },
+      cancel () {
+        this.$refs.increaseDom.resetFields()
+        this.visible = false
+      },
+      handelOk () {
+        const params = this.$refs.increaseDom.handleSubmit()
+        if (params) {
+          if (this.type === 0) {
+            this.exportNo(params)
+          } else if (this.type === 1) {
+            this.exportAll(params)
+          } else if (this.type === 2) {
+            this.exportReturn(params)
+          } else if (this.type === 3) {
+            this.exportNoBu(params)
+          }
+          this.visible = false
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+.content{
+  background: #fff;
+  padding:20px;
+  border-radius:2px;
+}
+</style>

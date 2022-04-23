@@ -1,0 +1,142 @@
+<template>
+  <page-header-wrapper>
+    <template v-slot:content>
+      <div class="page-header-content">
+      </div>
+    </template>
+    <a-spin tip="Loading..." :spinning="spinning">
+      <div class="content spin-content">
+        <a-card class="card" title="详细未付款学生信息" :bordered="false">
+          <div>
+            <GlobalForm :dataSource="getFormData" ref="schoolSerch" id="schoolSearch">
+            </GlobalForm>
+          </div>
+        </a-card>
+        <a-card class="card" title="学生征订信息" :bordered="false">
+          <div class="table" style="margin-top:10px;">
+            <a-table
+              :columns="columns"
+              :data-source="data"
+              :pagination="false"
+              :rowKey="record=>record.subscriptionsrecordId"
+            >
+              <template slot="footer" slot-scope="" v-if="data&&data.length>0">
+                <div style="text-align: center">总书册数：{{formData.bookCount}}册    原价：{{formData.totalPrice}}元    折后总价：{{formData.discountPrice}}元</div>
+              </template>
+            </a-table>
+          </div>
+        </a-card>
+        <div style="text-align: right">
+          <a-button type="primary" @click="print">
+            打印学生征订信息
+          </a-button>
+          <a-button type="primary" style="margin-left:10px;margin-right:24px;" @click="()=>{}">
+            导出学生征订信息
+          </a-button>
+        </div>
+      </div>
+    </a-spin>
+  </page-header-wrapper>
+</template>
+
+<script>
+  import GlobalForm from '@/components/GlobalForm'
+  import { formData } from './formData'
+  import { services } from '../../service'
+
+  const columns = [
+    {
+      title: '课程名称',
+      dataIndex: 'name',
+      key: 'name'
+    },
+    {
+      title: '课程号',
+      dataIndex: 'num',
+      key: 'num'
+    },
+    {
+      title: '教材名',
+      dataIndex: 'teachingMaterialName',
+      key: 'teachingMaterialName'
+    },
+    {
+      title: '出版社名称',
+      dataIndex: 'press',
+      key: 'press'
+    },
+    {
+      title: 'ISBN',
+      dataIndex: 'isbn',
+      key: 'isbn'
+    },
+    {
+      title: '定价',
+      dataIndex: 'price',
+      key: 'price'
+    },
+    {
+      title: '折扣',
+      dataIndex: 'discount',
+      key: 'discount'
+    }
+  ]
+  export default {
+    name: 'Index',
+    components: {
+      GlobalForm
+    },
+    data () {
+      return {
+        columns,
+        spinning: true,
+        formData: {},
+        data: []
+      }
+    },
+    computed: {
+      getFormData () {
+        return formData.getFormData(this, this.formData)
+      }
+    },
+    mounted () {
+      const params = this.$route.query || {}
+      this.getRecordById({ id: params.id })
+    },
+    methods: {
+      print () {
+        // window.print()
+        const params = this.$route.query || {}
+        this.$router.push({ path: '/book/solicitManage/printInfo', query: { id: params.id, isPayment: 0 } })
+      },
+      getRecordById (data) {
+        services.getRecordById({ ...data, isPayment: 0 }).then(response => {
+          this.formData = response || {}
+          this.data = response.subscriptionsDetailList || []
+          this.spinning = false
+        })
+      }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+.content{
+  background: #fff;
+  padding:20px;
+  border-radius:2px;
+  .modal {
+    /deep/ .ant-modal {
+      width: 900px;
+      min-width: 900px;
+    }
+    /deep/ .ant-alert {
+      padding: 5px 5px 5px 35px;
+      font-size: 12px;
+      .ant-alert-icon {
+        top: 8px;
+      }
+    }
+  }
+}
+</style>

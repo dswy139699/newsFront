@@ -1,0 +1,31 @@
+<template>
+  <a-config-provider :locale="zhCN">
+    <div id="app" style="background:#f0f2f5;">
+      <router-view/>
+    </div>
+  </a-config-provider>
+</template>
+
+<script>
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import moment from 'moment'
+import 'moment/dist/locale/zh-cn'
+
+moment.locale('zh')
+export default {
+  data () {
+    return {
+      zhCN
+    }
+  },
+  mounted () {
+
+  },
+  computed: {
+
+  }
+}
+</script>
+<style scoped lang="less">
+  @import './global.less';
+</style>

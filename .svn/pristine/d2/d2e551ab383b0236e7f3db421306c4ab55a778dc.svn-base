@@ -1,0 +1,331 @@
+<template>
+  <page-header-wrapper>
+    <template v-slot:content>
+      <div class="page-header-content">
+      </div>
+    </template>
+    <div class="content">
+      <div>
+        <GlobalForm :dataSource="getFormData" ref="schoolSerch" id="schoolSearch">
+          <template v-slot:button>
+            <div style="margin-top:4px;text-align: right">
+              <a-button type="primary" @click="search">
+                查询
+              </a-button>
+              <a-button style="margin-left:10px" @click="reset">
+                重置
+              </a-button>
+            </div>
+          </template>
+        </GlobalForm>
+      </div>
+      <div style="text-align: left">
+        <a-button type="primary" @click="increase">
+          新增
+        </a-button>
+      </div>
+      <div class="table" style="margin-top:10px;">
+        <a-table
+          :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+          :columns="columns"
+          :data-source="data"
+          @change="changePage"
+          :loading="loading"
+          :pagination="pagination"
+          :rowKey="record=>record.id"
+        >
+          <span slot="action" slot-scope="text,data">
+            <a @click="onEdit(data)">编辑</a>
+            <a-divider type="vertical" />
+            <a-popconfirm
+              title="确定删除?"
+              ok-text="是"
+              cancel-text="否"
+              @confirm="delStu(data)"
+            >
+              <a>删除</a>
+            </a-popconfirm>
+          </span>
+          <template slot="footer" slot-scope="" v-if="data&&data.length>0">
+            <a-button type="primary" @click="delStus">删除所选数据</a-button>
+          </template>
+        </a-table>
+      </div>
+      <div class="modal" ref="modal">
+        <a-modal
+          :title="title"
+          :visible="visible"
+          @cancel="cancel"
+          @ok="handelOk"
+          destroyOnClose
+          :getContainer="()=>this.$refs.modal"
+        >
+          <div class="increase">
+            <GlobalForm ref="increaseDom" :dataSource="getIncreaseForm" id="increaseDom">
+              <!--<template v-slot:warning>-->
+              <!--<a-alert style="margin:5px 0 0 10px" message="如：张三" type="warning" show-icon />-->
+              <!--</template>-->
+              <!--<template v-slot:studentNum>-->
+              <!--<a-alert style="margin:5px 0 0 10px" message="如：20111" type="warning" show-icon />-->
+              <!--</template>-->
+              <!--<template v-slot:schoolSystem>-->
+              <!--<a-alert style="margin:5px 0 0 10px" message="如：4" type="warning" show-icon />-->
+              <!--</template>-->
+              <!--<template v-slot:roomId>-->
+              <!--<a-alert style="margin:5px 0 0 10px" message="如：305宿舍" type="warning" show-icon />-->
+              <!--</template>-->
+              <!--<template v-slot:buildId>-->
+              <!--<a-alert style="margin:5px 0 0 10px" message="如：五号楼" type="warning" show-icon />-->
+              <!--</template>-->
+              <!--<template v-slot:password>-->
+              <!--<a-alert style="margin:5px 0 0 10px" message="密码必须六位以上" type="warning" show-icon />-->
+              <!--</template>-->
+            </GlobalForm>
+          </div>
+        </a-modal>
+      </div>
+    </div>
+  </page-header-wrapper>
+</template>
+
+<script>
+  import GlobalForm from '@/components/GlobalForm'
+  import { formData } from './formData'
+  import { checkPhone, checkEmail, checkIdCard } from '@/utils/checkFun'
+  import { services } from './service'
+  import moment from 'moment'
+
+  const columns = [
+    {
+      title: '姓名',
+      dataIndex: 'name',
+      key: 'name'
+    },
+    {
+      title: '学号',
+      dataIndex: 'studentNum',
+      key: 'studentNum'
+    },
+    {
+      title: '所属学校',
+      dataIndex: 'schoolName',
+      key: 'schoolName'
+    },
+    {
+      title: '所属班级',
+      dataIndex: 'className',
+      key: 'className'
+    },
+    {
+      title: '操作',
+      key: 'action',
+      scopedSlots: { customRender: 'action' }
+    }
+  ]
+  export default {
+    name: 'Index',
+    components: {
+      GlobalForm
+    },
+    data () {
+      return {
+        columns,
+        title: '新增学生',
+        loading: true,
+        searchData: {},
+        selectedRowKeys: [], // 选中的table数据
+        editInfo: null, // 需要编辑的该条数据的信息
+        visible: false,
+        data: [],
+        pagination: {// 分页
+          current: 1,
+          pageSize: 20,
+          total: 0
+        }
+      }
+    },
+    computed: {
+      getFormData () {
+        return formData.getFormData(this)
+      },
+      getIncreaseForm () {
+        return formData.getIncreaseForm(this)
+      }
+    },
+    created () {
+      // this.$store.dispatch('GetSchool')
+      // this.$store.dispatch('GetClass')
+    },
+    mounted () {
+      this.searchData = { schoolId: this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : '' }// 查询数据
+      this.getStudentForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+    },
+    methods: {
+      // 校验身份证号是否合法
+      checkIdCard (rule, value, callback) {
+        // const form = this.$refs.caseForm
+        if (value && !checkIdCard(value)) {
+          const title = '请输入正确的身份证号'
+          callback(title)
+        } else {
+          callback()
+        }
+      },
+      // 校验电话号码是否标准
+      checkTel (rule, value, callback) {
+        if (value && !checkPhone(value)) {
+          const title = '请输入正确格式的号码'
+          callback(title)
+        } else {
+          callback()
+        }
+      },
+      // 校验邮箱格式
+      checkEma (rule, value, callback) {
+        if (value && !checkEmail(value)) {
+          const title = '请输入正确格式的邮箱'
+          callback(title)
+        } else {
+          callback()
+        }
+      },
+      // check (rule, value, callback) {
+      //   if (value && value.length < 7) {
+      //     const title = '密码不少于六位数'
+      //     callback(title)
+      //   } else {
+      //     callback()
+      //   }
+      // },
+      // 分页切换
+      changePage (pagination) {
+        this.pagination.current = pagination.current
+        this.getStudentForPage({ pageIndex: pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+      },
+      increase () { // 新增
+        this.title = '新增学生'
+        this.visible = true
+        this.editInfo = null
+      },
+      onEdit (data) {
+        services.getStudentById({ id: data.id }).then(response => {
+        const newData = this._.cloneDeep(response || {})
+        this.title = '编辑学生'
+        this.editInfo = response
+        this.visible = true
+          newData.dateInSchool = newData.dateInSchool ? moment(newData.dateInSchool, 'YYYY-MM-DD') : null
+        this.$nextTick(() => { // 延时，不然dom没有加载出来
+          setTimeout(() => {
+            this.$refs.increaseDom.setFieldsValue(this._.pick(newData,
+              'dateInSchool', 'name', 'studentNum', 'educationalSys', 'idNum', 'sex', 'roomNum', 'roomBuilding',
+              'roomFloor', 'roomBed', 'telPhone', 'email', 'classIds', 'loginId'
+            ))
+          })
+        })
+        })
+      },
+      handelOk () { // 新增确定
+        const params = this.$refs.increaseDom.handleSubmit()
+        // console.log(params)
+        if (params) {
+          if (this.editInfo) { // 编辑情况
+            params.dateInSchool = params.dateInSchool ? moment(params.dateInSchool._d).format('YYYY-MM-DD') : ''
+            this.updateStudent({ ...this.editInfo, ...params })
+          } else { // 新增情况
+            params.dateInSchool = params.dateInSchool ? moment(params.dateInSchool._d).format('YYYY-MM-DD') : ''
+            this.saveStudent(params)
+          }
+          this.cancel()
+        }
+      },
+      cancel () {
+        this.$refs.increaseDom.resetFields()
+        this.visible = false
+      },
+      search () { // 查询
+        const params = this.$refs.schoolSerch.getFieldsValue()
+        this.searchData = params
+        this.pagination.current = 1
+        this.getStudentForPage({ pageIndex: 1, pageSize: this.pagination.pageSize, ...params })
+      },
+      reset () { // 重置
+        this.$refs.schoolSerch.resetFields()
+        this.searchData = { schoolId: this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : '' }// 查询数据
+      },
+      onSelectChange (selectedRowKeys) { // table选择
+        // console.log('selectedRowKeys changed: ', selectedRowKeys);
+        this.selectedRowKeys = selectedRowKeys
+      },
+      getStudentForPage (data) {
+        this.loading = true
+        services.getStudentForPage(data).then(response => {
+          this.data = response.records || []
+          this.total = response.total || 0
+          this.loading = false
+        })
+      },
+      // 新增
+      saveStudent (data) {
+        services.saveStudent(data).then(response => {
+          this.$notification.success({
+            message: '新增成功'
+          })
+          this.cancel()
+          // this.searchData = {}
+          // this.pagination.current = 1
+          this.getStudentForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+        })
+      },
+      // 更新
+      updateStudent (data) {
+        services.updateStudent(data).then(response => {
+          this.$notification.success({
+            message: '更新成功'
+          })
+          this.cancel()
+          // this.searchData = {}
+          // this.pagination.current = 1
+          this.getStudentForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+        })
+      },
+      delStu (data) { // 删除一个
+        this.delStudent({ idList: [data.id] })
+      },
+      delStus () { // 删除多个
+        this.delStudent({ idList: this.selectedRowKeys })
+      },
+      // 删除
+      delStudent (data) {
+        services.delStudent(data).then(response => {
+          this.$notification.success({
+            message: '删除成功'
+          })
+          // this.searchData = {}
+          // this.pagination.current = 1
+          this.getStudentForPage({ pageIndex: this.pagination.current, pageSize: this.pagination.pageSize, ...this.searchData })
+        })
+      }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+.content{
+  background: #fff;
+  padding:20px;
+  border-radius:2px;
+  .modal {
+    /deep/ .ant-modal {
+      width: 900px;
+      min-width: 900px;
+    }
+    /deep/ .ant-alert {
+      padding: 5px 5px 5px 35px;
+      font-size: 12px;
+      .ant-alert-icon {
+        top: 8px;
+      }
+    }
+  }
+}
+</style>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bab6b89a-730a-4a16-8cce-511a5ea26e2e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Less File" />
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZOfuViXbffItqJjHTz61BYu5p7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.linters.configure.manually.selectedeslint" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/views" />
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/layouts" />
+      <recent name="$PROJECT_DIR$/src/views/studentView" />
+    </key>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bab6b89a-730a-4a16-8cce-511a5ea26e2e" name="Default Changelist" comment="" />
+      <created>1584715283775</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584715283775</updated>
+      <workItem from="1584715286911" duration="33000" />
+      <workItem from="1611887424753" duration="35000" />
+      <workItem from="1611887482912" duration="13221000" />
+      <workItem from="1614047500214" duration="5648000" />
+      <workItem from="1614309693277" duration="232000" />
+      <workItem from="1614311278367" duration="2235000" />
+      <workItem from="1614572188748" duration="4485000" />
+      <workItem from="1614579602875" duration="2031000" />
+      <workItem from="1614588498691" duration="58000" />
+      <workItem from="1614588613757" duration="464000" />
+      <workItem from="1614610544932" duration="74000" />
+      <workItem from="1614668101120" duration="654000" />
+      <workItem from="1614843258565" duration="1872000" />
+      <workItem from="1614868661706" duration="6000" />
+      <workItem from="1614871732222" duration="2528000" />
+      <workItem from="1614931134944" duration="1115000" />
+      <workItem from="1615169480533" duration="7440000" />
+      <workItem from="1615178459325" duration="348000" />
+      <workItem from="1615273444615" duration="2246000" />
+      <workItem from="1615297788682" duration="32000" />
+      <workItem from="1615345739653" duration="491000" />
+      <workItem from="1615783128132" duration="2384000" />
+      <workItem from="1615819882756" duration="1277000" />
+      <workItem from="1616036029993" duration="7203000" />
+      <workItem from="1616379752848" duration="12202000" />
+      <workItem from="1616467958161" duration="5846000" />
+      <workItem from="1616575929685" duration="598000" />
+      <workItem from="1616728307182" duration="3857000" />
+      <workItem from="1616996135526" duration="8421000" />
+      <workItem from="1617085110652" duration="24258000" />
+      <workItem from="1617675413641" duration="8976000" />
+      <workItem from="1617766303092" duration="32188000" />
+      <workItem from="1618564660289" duration="6123000" />
+      <workItem from="1618890765927" duration="1823000" />
+      <workItem from="1619273206751" duration="93000" />
+      <workItem from="1650635911582" duration="272000" />
+      <workItem from="1650636393444" duration="29208000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="221" y="64" key="SettingsEditor" timestamp="1650639249311">
+      <screen x="0" y="23" width="1440" height="804" />
+    </state>
+    <state x="221" y="64" key="SettingsEditor/0.23.1440.804@0.23.1440.804" timestamp="1650639249311" />
+    <state x="484" y="284" width="683" height="486" key="find.popup" timestamp="1650697716736">
+      <screen x="0" y="23" width="1440" height="804" />
+    </state>
+    <state x="484" y="284" width="683" height="486" key="find.popup/0.23.1440.804@0.23.1440.804" timestamp="1650697716736" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/vue.config.js</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/GlobalForm/index.vue</url>
+          <line>25</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

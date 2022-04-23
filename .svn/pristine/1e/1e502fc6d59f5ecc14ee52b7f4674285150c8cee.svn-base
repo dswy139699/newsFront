@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="7c1c93e6-f839-4919-b194-d6e258b127c3" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="router.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/router.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="41" column="12" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formData.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/solicitManage/book/formData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/solicitManage/book/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="111" column="6" lean-forward="true" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+              <folding>
+                <element signature="e#3287#3335#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="Less File" />
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>IconFont</find>
+      <find>peopleList</find>
+      <find>device-mixin</find>
+      <find>mutation-types</find>
+      <find>mixins</find>
+      <find>defaultSettings</find>
+      <find>RightContent</find>
+      <find>@/components/GlobalHeader/RightContent</find>
+      <find>@/components/GlobalFooter</find>
+      <find>@/components/Other/CarbonAds</find>
+      <find>components/tools/TwoStepCaptcha</find>
+      <find>TwoStepCaptcha</find>
+      <find>isMobile</find>
+      <find>SIDEBAR_TYPE</find>
+      <find>getSmsCaptcha</find>
+      <find>sidebar_type</find>
+      <find>sideCollapsed</find>
+      <find>帮扶办</find>
+      <find>Github</find>
+      <find>vueComponent</find>
+      <find>handleMediaQuery</find>
+      <find>handleSettingChange</find>
+      <find>欢迎回来</find>
+      <find>CONTENT_WIDTH_TYPE</find>
+      <find>i18nRender</find>
+      <find>正在切换</find>
+      <find>updateTheme</find>
+      <find>mapState</find>
+      <find>selectedRowKeysIncrease</find>
+      <find>closeTag</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>E:\work\bfb_web\assist_web</dir>
+      <dir>E:\work\bfb_web\Bangfu</dir>
+      <dir>E:\work\sy</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/itemAssit/formData.js" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/itemAssit/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/giveMeaHand/index.vue" />
+        <option value="$PROJECT_DIR$/src/mock/index.js" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/echart/bar.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/echart/pie.vue" />
+        <option value="$PROJECT_DIR$/src/components/selectPeopleTest/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/noticeReader/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/selectPeople/index.vue" />
+        <option value="$PROJECT_DIR$/.env.development" />
+        <option value="$PROJECT_DIR$/src/components/breadcrumb/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/fileList/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/process/processList/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/familyForm/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/assitTarget/components/familyForm/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/aggregate/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/assitActive/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/assitTarget/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/assitTarget/formData.js" />
+        <option value="$PROJECT_DIR$/src/views/compositeAssit/components/assitActive/formData.js" />
+        <option value="$PROJECT_DIR$/config/plugin.config.js" />
+        <option value="$PROJECT_DIR$/src/permission.js" />
+        <option value="$PROJECT_DIR$/src/core/lazy_use.js" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/config/defaultSettings.js" />
+        <option value="$PROJECT_DIR$/src/layouts/index.js" />
+        <option value="$PROJECT_DIR$/src/store/mutation-types.js" />
+        <option value="$PROJECT_DIR$/src/layouts/UserLayout.vue" />
+        <option value="$PROJECT_DIR$/src/layouts/BasicLayout.vue" />
+        <option value="$PROJECT_DIR$/src/components/GlobalHeader/RightContent.vue" />
+        <option value="$PROJECT_DIR$/src/store/modules/user.js" />
+        <option value="$PROJECT_DIR$/src/views/personal/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/school/service.js" />
+        <option value="$PROJECT_DIR$/src/views/user/Login.vue" />
+        <option value="$PROJECT_DIR$/src/global.less" />
+        <option value="$PROJECT_DIR$/src/components/GlobalForm/Input/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/form/basicForm/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/GlobalForm/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/school/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/class/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/student/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/course/index.vue" />
+        <option value="$PROJECT_DIR$/src/store/getters.js" />
+        <option value="$PROJECT_DIR$/src/components/GlobalForm/Select/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/school/formData.js" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/course/formData.js" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/class/formData.js" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/student/formData.js" />
+        <option value="$PROJECT_DIR$/src/config/router.config.js" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/book/formData.js" />
+        <option value="$PROJECT_DIR$/src/views/solicitManage/book/index.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="436" />
+    <option name="y" value="99" />
+    <option name="width" value="1695" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="solicitManage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="solicitManage" type="462c0819:PsiDirectoryNode" />
+              <item name="book" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="E:\work\ant-design-vue-pro-master\node_modules\eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\work\sy\src\views\solicitManage" />
+      <recent name="E:\work\sy\src\views\solicitManage\class" />
+      <recent name="E:\work\sy\src\views\solicitManage\course" />
+      <recent name="E:\work\sy\src\components" />
+      <recent name="E:\work\sy\src\views\solicitManage\school" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\chobits\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c1c93e6-f839-4919-b194-d6e258b127c3" name="Default" comment="" />
+      <created>1600150810316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600150810316</updated>
+      <workItem from="1600150811813" duration="1568000" />
+      <workItem from="1601192024408" duration="268000" />
+      <workItem from="1601280687337" duration="2726000" />
+      <workItem from="1601345497626" duration="4271000" />
+      <workItem from="1601351647306" duration="12764000" />
+      <workItem from="1601431321430" duration="9358000" />
+      <workItem from="1602468570319" duration="19265000" />
+      <workItem from="1602554169640" duration="25054000" />
+      <workItem from="1602641259396" duration="25540000" />
+      <workItem from="1602728375476" duration="4413000" />
+      <workItem from="1602744125287" duration="7433000" />
+      <workItem from="1602815009350" duration="22174000" />
+      <workItem from="1602842246396" duration="43000" />
+      <workItem from="1603073157768" duration="12471000" />
+      <workItem from="1603160113439" duration="2138000" />
+      <workItem from="1603171880115" duration="8945000" />
+      <workItem from="1603246230817" duration="2097000" />
+      <workItem from="1603251235794" duration="2141000" />
+      <workItem from="1603333472129" duration="1227000" />
+      <workItem from="1603363447736" duration="610000" />
+      <workItem from="1603419785344" duration="611000" />
+      <workItem from="1603677866501" duration="12989000" />
+      <workItem from="1603764253729" duration="4711000" />
+      <workItem from="1603771440977" duration="3783000" />
+      <workItem from="1603851286858" duration="17421000" />
+      <workItem from="1603937033998" duration="21757000" />
+      <workItem from="1604022425678" duration="21741000" />
+      <workItem from="1604049361638" duration="4424000" />
+      <workItem from="1604281328053" duration="28828000" />
+      <workItem from="1604369487057" duration="25185000" />
+      <workItem from="1604454544386" duration="30134000" />
+      <workItem from="1604541002743" duration="13444000" />
+      <workItem from="1604557135654" duration="14374000" />
+      <workItem from="1604631493536" duration="21837000" />
+      <workItem from="1604654032824" duration="1848000" />
+      <workItem from="1604887424154" duration="21169000" />
+      <workItem from="1604974444125" duration="23693000" />
+      <workItem from="1605059404303" duration="21835000" />
+      <workItem from="1605146299863" duration="23650000" />
+      <workItem from="1605491305990" duration="22636000" />
+      <workItem from="1605577912020" duration="22796000" />
+      <workItem from="1605664819829" duration="6880000" />
+      <workItem from="1607308195351" duration="15295000" />
+      <workItem from="1607393485664" duration="19745000" />
+      <workItem from="1607478991627" duration="20515000" />
+      <workItem from="1607565126048" duration="18196000" />
+      <workItem from="1607651494532" duration="13126000" />
+      <workItem from="1607921103312" duration="9315000" />
+      <workItem from="1607997185128" duration="16271000" />
+      <workItem from="1608083822437" duration="15149000" />
+      <workItem from="1608183030957" duration="13060000" />
+      <workItem from="1608256840330" duration="15408000" />
+      <workItem from="1608515509194" duration="2150000" />
+      <workItem from="1608603043873" duration="12001000" />
+      <workItem from="1608775466236" duration="1980000" />
+      <workItem from="1608862614887" duration="2796000" />
+      <workItem from="1609120862521" duration="4373000" />
+      <workItem from="1609209208326" duration="20000" />
+      <workItem from="1609725720736" duration="1880000" />
+      <workItem from="1609751414965" duration="413000" />
+      <workItem from="1609812667699" duration="22238000" />
+      <workItem from="1609898490490" duration="17193000" />
+      <workItem from="1609984732918" duration="16751000" />
+      <workItem from="1610071380374" duration="16201000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="784328000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="536" y="109" width="1695" height="980" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1834641" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3299435" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5012903" side_tool="true" weight="0.2038835" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299435" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49870968" visible="true" weight="0.18052256" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="8" weight="0.3299435" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32703003" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16645162" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32818073" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49870968" visible="true" weight="0.2038835" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5012903" side_tool="true" visible="true" weight="0.2038835" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/GlobalHeader/AvatarDropdown.vue</url>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/BlankLayout.vue" />
+    <entry file="file://$PROJECT_DIR$/src/layouts/PageView.vue" />
+    <entry file="file://$PROJECT_DIR$/src/layouts/RouteView.vue" />
+    <entry file="file://$PROJECT_DIR$/src/layouts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/plugin.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1620" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/tools/TwoStepCaptcha.vue" />
+    <entry file="file://$PROJECT_DIR$/src/config/defaultSettings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/lazy_use.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="63" column="14" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/modules/app.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/modules/permission.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/app-mixin.js" />
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/BasicLayout.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/mutation-types.js" />
+    <entry file="file://$PROJECT_DIR$/src/store/modules/async-router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-331">
+          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/helper/permission.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/UserLayout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/BasicLayout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="91" column="40" lean-forward="true" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalHeader/AvatarDropdown.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/modules/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalHeader/RightContent.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/fileList/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="999">
+          <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/user/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="189" column="42" lean-forward="true" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#a-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-alert#0;n#div#0;n#a-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-form-item#0;n#a-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#1711#1732#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personal/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/global.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1458">
+          <caret line="93" column="18" lean-forward="true" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/school/service.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalForm/Input/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#a-input-number#0;n#a-form-item#0;n#a-col#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/form/basicForm/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="91" column="23" lean-forward="true" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/form/basicForm/formData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1728">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/checkFun.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="61" column="14" lean-forward="true" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalForm/Switch/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1548">
+          <caret line="79" column="33" lean-forward="true" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalForm/Text/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/student/service.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/student/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="42" column="29" lean-forward="true" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+          <folding>
+            <element signature="e#3173#3221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/class/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="151" column="6" lean-forward="true" selection-start-line="151" selection-start-column="6" selection-end-line="151" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#GlobalForm#0;n#div#0;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-button#1;n#div#0;n#template#0;n#GlobalForm#0;n#div#0;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-alert#0;n#template#1;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-alert#0;n#template#2;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-alert#0;n#template#3;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#4;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#template#0;n#a-table#0;n#div#0;n#div#0;n#template#4;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-tag#0;n#span#0;n#div#0;n#template#0;n#a-table#0;n#div#0;n#div#0;n#template#4;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#4206#4254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/course/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="169" column="14" lean-forward="true" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#a-alert#0;n#template#0;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-alert#0;n#template#1;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-alert#0;n#template#2;n#GlobalForm#0;n#div#0;n#a-modal#0;n#div#3;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#3057#3105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/school/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#GlobalForm#0;n#div#0;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-button#1;n#div#0;n#template#0;n#GlobalForm#0;n#div#0;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#page-header-wrapper#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/getters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalForm/Select/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/school/formData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/course/formData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="113" column="11" lean-forward="true" selection-start-line="112" selection-start-column="8" selection-end-line="117" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/class/formData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2260">
+          <caret line="136" column="29" lean-forward="true" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GlobalForm/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/student/formData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="269" column="27" lean-forward="true" selection-start-line="269" selection-start-column="27" selection-end-line="269" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/router.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="41" column="12" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/book/formData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/solicitManage/book/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="111" column="6" lean-forward="true" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+          <folding>
+            <element signature="e#3287#3335#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

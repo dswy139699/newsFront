@@ -1,0 +1,53 @@
+<template>
+  <page-header-wrapper>
+    <template v-slot:content>
+      <div class="page-header-content">
+      </div>
+    </template>
+    <div class="content">
+      <div>
+        <a-button type="primary" style="margin-right:10px" @click="exportNo">导出未征订学生</a-button>
+        <a-button type="primary" style="margin-right:10px" @click="exportAll">导出所有学生付款信息</a-button>
+        <a-button type="primary" style="margin-right:10px" @click="exportReturn">导出学生退款信息</a-button>
+        <a-button type="primary" @click="exportNoBu">导出未补款学生</a-button>
+      </div>
+    </div>
+  </page-header-wrapper>
+</template>
+
+<script>
+  // import { services } from './service'
+  export default {
+    name: 'Index',
+    data () {
+      return {
+        schoolId: ''
+      }
+    },
+    mounted () {
+      this.schoolId = this.$store.getters.schoolNameList[0] ? this.$store.getters.schoolNameList[0].value : ''
+    },
+    methods: {
+      exportNo () { // 导出未征订学生
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadIsNotSubscriptionsStudent?schoolId=' + this.schoolId)
+      },
+      exportAll () { // 导出所有学生付款信息
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadPaymentStudent?schoolId=' + this.schoolId)
+      },
+      exportReturn () { // 导出学生退款信息
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadRefundStudent?schoolId=' + this.schoolId)
+      },
+      exportNoBu () { // 导出未补款学生
+        window.open(process.env.VUE_APP_API_BASE_URL + '/export/downloadFillingMoneyStudent?schoolId=' + this.schoolId)
+      }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+.content{
+  background: #fff;
+  padding:20px;
+  border-radius:2px;
+}
+</style>

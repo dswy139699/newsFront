@@ -1,0 +1,150 @@
+@import '~ant-design-vue/es/style/themes/default.less';
+
+html,
+body,
+#app, #root {
+  height: 100%;
+  //min-width:1280px;
+  margin:0;
+  padding:0;
+}
+
+.colorWeak {
+  //filter: invert(80%);
+}
+
+.ant-layout.layout-basic {
+  height: 100%;
+  //min-width:1280px;
+  //min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+// 数据列表 样式
+.table-alert {
+  margin-bottom: 16px;
+}
+// 数据列表 操作
+.table-operator {
+  margin-bottom: 18px;
+
+  button {
+    margin-right: 8px;
+  }
+}
+// 数据列表 搜索条件
+.table-page-search-wrapper {
+
+  .ant-form-inline {
+    .ant-form-item {
+      display: flex;
+      margin-bottom: 24px;
+      margin-right: 0;
+
+      .ant-form-item-control-wrapper {
+        flex: 1 1;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      > .ant-form-item-label {
+        line-height: 32px;
+        padding-right: 8px;
+        width: auto;
+      }
+      .ant-form-item-control {
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+  }
+
+  .table-page-search-submitButtons {
+    display: block;
+    margin-bottom: 24px;
+    white-space: nowrap;
+  }
+}
+
+//改变antd的table的样式，项目统一样式  vue要顶掉antd的样式，外面一定要有一层原生的class嵌套
+
+.table{
+  border:1px solid #e8e8e8;
+  /deep/ .ant-table-thead > tr > th{
+    font-size:14px;
+    font-weight: 600;
+    padding:0 16px;
+    line-height:50px;
+    color:#1C2D51;
+    /*background: #EBF1FB;*/
+    /*border:none;*/
+  }
+  /deep/ .ant-table-tbody > tr > td{
+    border:none;
+    padding:0 16px;
+    line-height:34px;
+  }
+  /deep/ .ant-table-tbody .ant-table-row:nth-child(even){
+    background:#F9FBFF;
+  }
+  /deep/ .ant-table{
+    font-size: 14px;
+    color: #333;
+  }
+  /deep/ .ant-table-pagination.ant-pagination {
+    float: right;
+    margin: 16px;
+  }
+  /deep/ .ant-table-wrapper {
+    /*border:1px solid #e8e8e8;*/
+    border-radius: 2px;
+  }
+  /deep/ .ant-table-placeholder {
+    border-bottom: none;
+  }
+}
+.scroll {
+  /deep/ .ant-table-body {
+    overflow-x: hidden !important;
+  }
+
+  /deep/ .ant-table-body:hover {
+    overflow-x: scroll !important;
+  }
+}
+//antd table
+
+//.ant-input{ border-radius: 4px; } .ant-btn{ border-radius: 4px; }
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
